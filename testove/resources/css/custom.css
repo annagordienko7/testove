@@ -1,0 +1,1336 @@
+@import "./fonts.css";
+
+/* === ЗМІННІ (VARIABLES) === */
+:root {
+  --color-bg: #050c1a;        
+  --color-bg-dark: #030811;   
+  --color-primary: #ff4305;  
+  --color-primary-hover: #e52d04;
+  --color-text-muted: #a0aec0;
+  --container-max-width: 1440px;
+}
+
+/* === ГЛОБАЛЬНІ СТИЛІ === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: #ffffff;
+  font-family: "fixed", Arial, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+  
+  @media (max-width: 960px) {
+    padding: 0 20px;
+  }
+}
+.admin-bar .site-header {
+  margin-top: 50px;
+}
+
+a {
+  color: #F2DDC2;
+
+}
+
+.card_block__item_link {
+    padding-bottom: 3px;
+    position: relative
+}
+.card_block__item_link:hover:before {
+    width: 100%;
+}
+.card_block__item_link:before {
+    content: "";
+    background-color: #F2DDC2;
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transition: width .25s ease;
+    width: 0;
+}
+
+
+/* === ТИПОГРАФІКА === */
+h1 {
+  font-family: "NAMU 1990", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 66px;
+  line-height: 115%;
+  color: #ffffff;
+  text-align: center;
+
+  @media (max-width: 960px) {
+    font-size: 36px;
+  }
+}
+
+h2, h3,h4 {
+  font-family: "NAMU 1990", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 52px;
+  line-height: 120%;
+  color: #F2DDC2;
+
+  @media (max-width: 960px) {
+    font-size: 33px;
+    text-align: left;
+  }
+}
+
+p {
+  font-size: 20px;
+  line-height: 140%;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* === ШАПКА САЙТУ (HEADER) === */
+.site-header {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  background-color: transparent;
+  width: 100%;
+  z-index: 100;
+
+  @media (max-width: 960px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+      #menu-wrapper {
+        background: var(--color-bg);
+        height: 100%;
+        left: 0;
+        padding: 25px 16px;
+        position: fixed;
+        top: 100px;
+        width: 100%;
+        text-align: center;
+        z-index: 1000000;
+        li a {
+          font-size: 24px;
+        padding: 20px 0;
+        display: inline-block;
+        }
+      }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 156px;
+    height: auto;
+    display: block;
+      @media (max-width: 960px) {
+        width: 105px;
+      }
+  }
+
+  /* Головне навігаційне меню */
+  &__nav {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a {
+        font-family: "fixed", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: #F2DDC2;
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+}
+
+.wp-block-heading {
+  font-size: 40px;
+  margin: 20px 0;
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
+}
+
+
+
+/* Мобільна кнопка бургер */
+.hamburger {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    display: block;
+  }
+  svg {
+    display: none;
+  }
+  &.act {
+    img {
+      display: none;
+    }
+    svg {
+      display: block;
+    }
+  }
+}
+
+
+
+/* === (HERO BLOCK) === */
+.hero-block {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-bg-dark);
+
+  @media (max-width: 960px) {
+    height: calc(100vh - 80px); /* Учитываем шапку на мобильных */
+    min-height: 500px;
+  }
+
+  /* Настройки фонового слайдера */
+  .hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(5, 12, 26, 0.5) 0%, rgba(3, 8, 17, 0.85) 100%);
+      z-index: 2;
+    }
+
+    &__slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      animation: cssHeroSlider 18s infinite ease-in-out;
+
+      &:nth-child(1) { animation-delay: 0s; }
+      &:nth-child(2) { animation-delay: 6s; }
+      &:nth-child(3) { animation-delay: 12s; }
+    }
+  }
+
+  /* Контент поверх слайдера */
+  &__container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+  }
+
+  &__content {
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    @media (max-width: 960px) {
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: "fixed", Arial, sans-serif;
+    max-width: 640px;
+    margin: 0 auto 12px auto;
+    color: #F2DDC2;
+    opacity: 0.85;
+
+    @media (max-width: 960px) {
+      font-size: 16px;
+    }
+  }
+
+  &__actions {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__btn {
+    display: inline-block;
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    background-color: var(--color-primary);
+    padding: 18px 42px;
+    text-decoration: none;
+    border: 1px solid var(--color-primary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 960px) {
+      padding: 14px 32px;
+      font-size: 14px;
+      width: 100%; 
+      max-width: 280px;
+    }
+  }
+}
+
+
+@keyframes cssHeroSlider {
+  0% { opacity: 0; transform: scale(1); }
+  6% { opacity: 1; }
+  33% { opacity: 1; }
+  39% { opacity: 0; transform: scale(1.04); } 
+  100% { opacity: 0; }
+}
+
+
+
+/* === БЛОК ПЕРЕВАГ (FEATURES BLOCK) === */
+.features-block {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: var(--color-bg);
+
+  @media (max-width: 960px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__header {
+    margin-bottom: 56px;
+    text-align: center;
+
+    @media (max-width: 960px) {
+      margin-bottom: 40px;
+      text-align: left;
+    }
+  }
+}
+
+/* Налаштування Grid сітки */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 колонки на десктопі */
+  gap: 32px;
+  width: 100%;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr; /* 1 колонка на мобільних */
+    gap: 20px;
+  }
+}
+
+/* Стилі індивідуальної картки переваги */
+.features__card {
+  background-color: var(--color-bg-dark);
+  border: 1px solid rgba(242, 221, 194, 0.1); /* Легка рамка в колір вашого тексту */
+  padding: 40px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  /* Декоративна лінія знизу картки, яка активується при ховері */
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    border-color: rgba(255, 67, 5, 0.3); /* Підсвічування рамки помаранчевим */
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(3, 8, 17, 0.5);
+
+    &::before {
+      width: 100%;
+    }
+
+    .features__card-num {
+      color: var(--color-primary);
+      transform: scale(1.05);
+    }
+  }
+
+  @media (max-width: 960px) {
+    padding: 30px;
+  }
+
+  /* Стилізація порядкового номера */
+  &-num {
+    font-family: "NAMU 1990", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-text-muted);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  /* Стилізація заголовка картки (використовуємо локальний клас, щоб не ламати глобальні h3) */
+  &-title {
+    font-family: "NAMU 1990", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #F2DDC2;
+    line-height: 130%;
+  }
+
+  /* Текст картки */
+  &-text {
+    /* Автоматично наслідує ваш глобальний p */
+    font-size: 16px; 
+    line-height: 150%;
+  }
+}
+
+
+/* === РОЗДІЛЕНА СЕКЦІЯ (SPLIT SECTION) === */
+.split-section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: var(--color-bg-dark); /* Чергуємо фон: тут темніший для контрасту */
+
+  @media (max-width: 960px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 рівні колонки на десктопі */
+    gap: 64px;
+    align-items: center;
+
+    @media (max-width: 960px) {
+      grid-template-columns: 1fr; /* 1 колонка на мобільних */
+      gap: 40px;
+    }
+  }
+
+  /* Текстовий блок */
+  &__col-text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__title {
+    /* Наслідує ваш глобальний h2 (NAMU 1990, 52px, колір #F2DDC2) */
+    margin: 0;
+  }
+
+  &__desc {
+    /* Наслідує ваш глобальний p (20px, var(--color-text-muted)) */
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 160%;
+  }
+
+  /* Блок слайдера */
+  &__col-slider {
+    position: relative;
+    width: 100%;
+  }
+}
+
+/* CSS Слайдер */
+.split-slider {
+  display: flex;
+  width: 100%;
+  height: 480px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  border: 1px solid rgba(242, 221, 194, 0.1);
+  box-shadow: 0 20px 40px rgba(5, 12, 26, 0.4);
+  
+  /* Ховаємо стандартний скроллбар браузера */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  @media (max-width: 960px) {
+    height: 320px;
+  }
+
+  &__item {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Контейнер для точок навігації */
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  /* Стиль точок */
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-text-muted);
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    display: inline-block;
+
+    &:hover {
+      opacity: 0.7;
+      background-color: #F2DDC2;
+    }
+  }
+}
+
+
+/* === СЕКЦІЯ ФОРМИ (CALLBACK SECTION) === */
+.callback-section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: var(--color-bg);
+
+  @media (max-width: 960px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__container {
+    max-width: 800px; /* Робимо форму компактнішою по ширині */
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: 960px) {
+      text-align: left;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+/* Елементи форми */
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    @media (max-width: 960px) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+
+    label {
+      font-family: "fixed", Arial, sans-serif;
+      font-size: 14px;
+      color: #F2DDC2;
+      opacity: 0.9;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+      font-family: "fixed", Arial, sans-serif;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: var(--color-bg-dark);
+      border: 1px solid rgba(242, 221, 194, 0.2);
+      padding: 14px 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+
+      &:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 10px rgba(255, 67, 5, 0.2);
+      }
+      
+      &::placeholder {
+        color: var(--color-text-muted);
+        opacity: 0.5;
+      }
+    }
+
+    select {
+      appearance: none; /* Прибираємо дефолтну стрілку браузера */
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23F2DDC2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Стилі повідомлень про помилки валідації */
+    .error-message {
+      font-family: "fixed", Arial, sans-serif;
+      font-size: 12px;
+      color: #ff3333;
+      display: none;
+      margin-top: 4px;
+    }
+
+    /* Стан помилки */
+    &.has-error {
+      input, select, textarea {
+        border-color: #ff3333;
+      }
+      .error-message {
+        display: block;
+      }
+    }
+  }
+
+  /* Рядок чекбоксу згоди */
+  .form-group--checkbox {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .checkbox-label {
+      display: flex;
+      align-items: center; /* Рівняння в один рядок */
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    input[type="checkbox"] {
+      accent-color: var(--color-primary); /* Сучасний метод фарбування чекбоксу */
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .checkbox-text {
+      font-size: 14px;
+      line-height: 140%;
+      color: var(--color-text-muted);
+    }
+  }
+
+  /* Кнопка */
+  .form-actions {
+    margin-top: 8px;
+  }
+
+  .form-submit-btn {
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 16px 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 960px) {
+      width: 100%;
+    }
+  }
+
+  /* Вікно успішного відправлення */
+  .form-success-alert {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+    z-index: 10;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px dashed var(--color-primary);
+    
+    h3 {
+      font-size: 32px;
+      color: #F2DDC2;
+      @media (max-width: 960px) {
+        font-size: 24px;
+      }
+    }
+  }
+  
+  &.is-success {
+    .form-success-alert {
+      display: flex;
+    }
+  }
+}
+
+
+/* === СЕКЦІЯ КОНТАКТІВ (CONTACTS SECTION) === */
+.contacts-section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: var(--color-bg-dark); /* Темніший колір для контрасту з формою */
+
+  @media (max-width: 960px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 колонки */
+    gap: 64px;
+    align-items: stretch;
+
+    @media (max-width: 960px) {
+      grid-template-columns: 1fr; /* 1 колонка на мобільних */
+      gap: 40px;
+    }
+  }
+}
+
+/* Лівий блок з текстом */
+.contacts-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__title {
+    /* Наслідує ваш глобальний h2 */
+    margin: 0;
+  }
+
+  &__subtitle {
+    /* Наслідує ваш глобальний p */
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 18px;
+    max-width: 480px;
+  }
+}
+
+/* Список контактів */
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contacts-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &__label {
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  &__link {
+    font-family: "NAMU 1990", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #F2DDC2;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+
+    /* Підхоплює ваш ефект лінії під посиланням при ховері, який ви прописали вище */
+    @media (max-width: 960px) {
+      font-size: 20px;
+    }
+  }
+}
+
+/* Блок соціальних мереж */
+.contacts-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+
+  &__label {
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-bg);
+    border: 1px solid rgba(242, 221, 194, 0.1);
+    color: #F2DDC2;
+    transition: all 0.3s ease;
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: #ffffff;
+      background-color: var(--color-primary);
+      transform: translateY(-2px);
+
+      svg {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+/* Правий блок: Мапа */
+.contacts-map {
+  width: 100%;
+  min-height: 400px;
+
+  @media (max-width: 960px) {
+    min-height: 300px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    border: 1px solid rgba(242, 221, 194, 0.1);
+    box-shadow: 0 20px 40px rgba(5, 12, 26, 0.3);
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 960px) {
+      min-height: 300px;
+    }
+
+    /* Фільтр, який робить стандартну Google-мапу стильною та темною під дизайн сайту */
+    iframe {
+      filter: grayscale(1) invert(0.92) contrast(1.2);
+    }
+  }
+}
+
+
+/* === СЕКЦІЯ FAQ (FAQ SECTION) === */
+.faq-section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: var(--color-bg); /* Основний глибокий синій фон */
+
+  @media (max-width: 960px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__header {
+    margin-bottom: 56px;
+    text-align: center;
+
+    @media (max-width: 960px) {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+  }
+}
+
+/* Контейнер акордеону */
+.faq-accordion {
+  max-width: 920px; /* Обмежуємо ширину для зручного читання */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Відступ між плашками */
+}
+
+/* Індивідуальний елемент */
+.faq-item {
+  background-color: var(--color-bg-dark);
+  border: 1px solid rgba(242, 221, 194, 0.1);
+  transition: border-color 0.3s ease;
+
+  /* Ховер-ефект на весь блок запитання */
+  &:hover {
+    border-color: rgba(255, 67, 5, 0.3); /* Легке підсвічування помаранчевим */
+  }
+
+  /* Ховаємо стандартний трикутник браузера в усіх системах */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary {
+    list-style: none;
+  }
+
+  /* Шапка запитання, на яку клікають */
+  &__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+
+    @media (max-width: 960px) {
+      padding: 20px;
+      gap: 16px;
+    }
+  }
+
+  /* Текст самого запитання */
+  &__question {
+    font-family: "NAMU 1990", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #F2DDC2;
+    line-height: 140%;
+
+    @media (max-width: 960px) {
+      font-size: 16px;
+    }
+  }
+
+  /* CSS Стрілочка-іконка праворуч */
+  &__icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff4305' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+  }
+
+  /* Контейнер для відповіді */
+  &__content {
+    padding: 0 32px 24px 32px;
+
+    @media (max-width: 960px) {
+      padding: 0 20px 20px 20px;
+    }
+  }
+
+  /* Текст відповіді */
+  &__text {
+    /* Наслідує ваш глобальный p */
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 160%;
+    color: var(--color-text-muted);
+  }
+
+  /* === СТАН ВІДКРИТОГО ЗАПИТАННЯ (&[open]) === */
+  &[open] {
+    border-color: var(--color-primary); /* Помаранчева рамка, коли відкрито */
+
+    .faq-item__icon {
+      transform: rotate(180deg); /* Повертаємо стрілку догори */
+    }
+  }
+}
+
+
+/* === ПІДВАЛ (FOOTER) === */
+.site-footer {
+  padding-top: 80px;
+  padding-bottom: 40px;
+  background-color: var(--color-bg-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  @media (max-width: 960px) {
+    padding-top: 48px;
+    padding-bottom: 32px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr; /* Трьохколонкова структура */
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 48px;
+
+    @media (max-width: 960px) {
+      grid-template-columns: 1fr; /* В одну колонку на мобільних */
+      gap: 36px;
+      text-align: center;
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid rgba(242, 221, 194, 0.1);
+    padding-top: 24px;
+    
+    p {
+      color: rgba(242, 221, 194, 0.4) !important;
+      font-size: 14px;
+      text-align: left;
+
+      @media (max-width: 960px) {
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* Загальні стилі для кожної колонки */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (max-width: 960px) {
+    align-items: center;
+  }
+
+  &-title {
+    font-family: "NAMU 1990", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+}
+
+/* Колонка 1: Бренд та соцмережі */
+.footer-brand-link {
+  display: inline-block;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+
+  .footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: var(--color-bg);
+    border: 1px solid rgba(242, 221, 194, 0.1);
+    color: #F2DDC2;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* Колонка 2: Меню навігації */
+.footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  li a {
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 16px;
+    color: #F2DDC2;
+    text-decoration: none;
+    opacity: 0.8;
+    width: fit-content;
+    display: inline-block;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+/* Колонка 3: CTA (Зв'язок та кнопка) */
+.footer-phone {
+  font-family: "NAMU 1990", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #F2DDC2;
+  text-decoration: none;
+  width: fit-content;
+  display: inline-block;
+}
+
+.footer-btn {
+  display: inline-block;
+  font-family: "fixed", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  padding: 12px 28px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: fit-content;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 960px) {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+
+.entry-content {
+  text-align: left;
+  h1 {
+    font-size: 50px;
+    padding: 20px 0;  
+    color: #f2ddc2;
+    text-align: left;
+  }
+  table {
+    margin: 10px 0;
+  }
+}
+
+/* === СПЛИВАЮЧИЙ БАНЕР (POP-UP BANNER) === */
+.popup-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Затемнення та розмиття фону сайту */
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 8, 17, 0.8);
+    backdrop-filter: blur(5px);
+    cursor: pointer; /* Показує, що по фону можна клікнути для виходу */
+  }
+
+  /* Вікно з контентом */
+  &__content {
+    position: relative;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+    padding: 48px;
+    max-width: 540px;
+    width: 100%;
+    margin: 0 20px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(255, 67, 5, 0.25);
+    z-index: 2;
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media (max-width: 960px) {
+      padding: 36px 24px;
+    }
+  }
+
+  /* Кнопка-хрестик закриття */
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__title {
+    font-family: "NAMU 1990", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #F2DDC2;
+    margin-bottom: 16px;
+    line-height: 130%;
+
+    @media (max-width: 960px) {
+      font-size: 22px;
+    }
+  }
+
+  &__text {
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-text-muted);
+    margin-bottom: 28px;
+  }
+
+  &__btn {
+    display: inline-block;
+    font-family: "fixed", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 14px 36px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 960px) {
+      width: 100%;
+    }
+  }
+
+  /* Стан активного банера */
+  &.is-active {
+    opacity: 1;
+    pointer-events: auto;
+
+    .popup-banner__content {
+      transform: translateY(0);
+    }
+  }
+}

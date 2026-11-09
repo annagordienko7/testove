@@ -1,0 +1,54 @@
+
+@font-face {
+  font-family: 'NAMU 1990';
+  src: url('../fonts/NAMU-1990.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* LIGHT (Легкий / Тонкий) — 300 */
+@font-face {
+  font-family: 'fixed';
+  src: url('../fonts/FixelText-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* REGULAR (Звичайний) — 400 */
+@font-face {
+  font-family: 'fixed';
+  src: url('../fonts/FixelText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* MEDIUM (Ваш поточний) — 500 */
+/* Зверніть увагу: для Medium правильніше ставити вагу 500, а не 700! */
+@font-face {
+  font-family: 'fixed';
+  src: url('../fonts/FixelText-Medium.woff2') format('woff2');
+  font-weight: 500; 
+  font-style: normal;
+  font-display: swap;
+}
+
+/* SEMIBOLD (Напівжирний) — 600 */
+@font-face {
+  font-family: 'fixed';
+  src: url('../fonts/FixelText-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* BOLD (Жирний) — 700 */
+@font-face {
+  font-family: 'fixed';
+  src: url('../fonts/FixelText-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
